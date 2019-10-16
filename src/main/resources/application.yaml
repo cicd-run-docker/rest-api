@@ -9,13 +9,6 @@ spring:
   messages:
     basename: i18n/messages
 
-#  #datasource
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/registration_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
-#    username: root
-#    password: root123456
-
   boot:
     admin:
       context-path: /boot-admin

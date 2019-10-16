@@ -119,6 +119,12 @@
             <version>${zookeeper.version}</version>
             <optional>true</optional>
         </dependency>
+
+<!--        undertow-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
