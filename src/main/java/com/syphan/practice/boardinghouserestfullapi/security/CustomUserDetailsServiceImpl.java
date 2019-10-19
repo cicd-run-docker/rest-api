@@ -1,5 +1,6 @@
 package com.syphan.practice.boardinghouserestfullapi.security;
 
+import com.syphan.practice.commonservice.exception.BIZException;
 import com.syphan.practice.commonservice.security.UserPrincipal;
 import com.syphan.practice.registrationservice.model.Role;
 import com.syphan.practice.registrationservice.model.User;
@@ -25,7 +26,9 @@ public class CustomUserDetailsServiceImpl implements com.syphan.practice.commons
 
     @Override
     public UserDetails loadUserById(Integer id) throws UsernameNotFoundException {
-        return null;
+        User user = userService.getById(id);
+        if (user != null) return create(user);
+        else throw new UsernameNotFoundException(String.format("%s%s", "User not found with id: ", id));
     }
 
     @Override

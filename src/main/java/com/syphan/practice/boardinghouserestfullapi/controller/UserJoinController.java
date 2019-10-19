@@ -1,11 +1,13 @@
 package com.syphan.practice.boardinghouserestfullapi.controller;
 
+import com.syphan.practice.commonservice.util.EntityValidationUtils;
 import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
-import com.syphan.practice.registrationservice.dto.UserCreateDto;
+import com.syphan.practice.dto.registration.UserCreateDto;
 import com.syphan.practice.registrationservice.model.User;
 import com.syphan.practice.registrationservice.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,9 @@ public class UserJoinController {
     }
 
     @PostMapping
-    public ResponseEntity<OpenApiWithDataResponse<User>> signUp(@Valid @RequestBody UserCreateDto userInfo) {
-        return ResponseEntity.ok(new OpenApiWithDataResponse<User>(userService.signUp(userInfo)));
+    public ResponseEntity<OpenApiWithDataResponse<User>> signUp(@Valid @RequestBody UserCreateDto reqPram,
+                                                                BindingResult bindingResult) {
+        EntityValidationUtils.processBindingResults(bindingResult);
+        return ResponseEntity.ok(new OpenApiWithDataResponse<User>(userService.signUp(reqPram)));
     }
 }

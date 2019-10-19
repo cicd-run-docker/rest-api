@@ -4,9 +4,7 @@ import com.syphan.practice.boardinghouserestfullapi.security.JwtTokenProperties;
 import com.syphan.practice.boardinghouserestfullapi.security.JwtTokenProvider;
 import com.syphan.practice.commonservice.util.EntityValidationUtils;
 import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
-import com.syphan.practice.registrationservice.dto.UserSignIn;
-import com.syphan.practice.registrationservice.service.UserService;
-import org.apache.dubbo.config.annotation.Reference;
+import com.syphan.practice.dto.registration.UserSignIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,9 +22,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/auth")
 public class UserAuthController {
-
-    @Reference
-    private UserService userService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
