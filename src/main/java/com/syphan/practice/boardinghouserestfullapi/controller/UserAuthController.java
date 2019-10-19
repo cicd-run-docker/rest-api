@@ -5,6 +5,8 @@ import com.syphan.practice.boardinghouserestfullapi.security.JwtTokenProvider;
 import com.syphan.practice.commonservice.util.EntityValidationUtils;
 import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
 import com.syphan.practice.dto.registration.UserSignIn;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@Api(tags = "Authentication Management V1")
 @RestController
 @RequestMapping("/api/v1/auth")
 public class UserAuthController {
@@ -32,6 +35,7 @@ public class UserAuthController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @ApiOperation("User SignIn")
     @PostMapping("/sign-in")
     public ResponseEntity<OpenApiWithDataResponse<String>> authenticateUser(@Valid @RequestBody UserSignIn reqParam,
                                                                             BindingResult bindingResult) {

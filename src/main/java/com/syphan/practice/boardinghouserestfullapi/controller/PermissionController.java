@@ -5,6 +5,8 @@ import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
 import com.syphan.practice.dto.registration.PermissionCreateDto;
 import com.syphan.practice.registrationservice.model.Permission;
 import com.syphan.practice.registrationservice.service.PermissionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@Api(tags = "Permission Management V1")
 @RestController
 @RequestMapping("/api/v1/permissions")
 public class PermissionController {
@@ -23,6 +26,7 @@ public class PermissionController {
     @Reference
     private PermissionService service;
 
+    @ApiOperation("Create New Permission")
     @PreAuthorize("hasAuthority('UPMS_PERMISSION_EDIT')")
     @PostMapping
     public ResponseEntity<OpenApiWithDataResponse<Permission>> create(@Valid @RequestBody PermissionCreateDto reqPram,

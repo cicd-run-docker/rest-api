@@ -5,6 +5,8 @@ import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
 import com.syphan.practice.dto.registration.RoleCreateDto;
 import com.syphan.practice.registrationservice.model.Role;
 import com.syphan.practice.registrationservice.service.RoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@Api(tags = "Role Management V1")
 @RestController
 @RequestMapping("/api/v1/roles")
 public class RoleController {
@@ -23,6 +26,7 @@ public class RoleController {
     @Reference
     private RoleService roleService;
 
+    @ApiOperation("Create New Role")
     @PreAuthorize("hasAuthority('UPMS_ROLE_READ')")
     @PostMapping
     public ResponseEntity<OpenApiWithDataResponse<Role>> addRole(@Valid @RequestBody RoleCreateDto reqParam,
