@@ -2,9 +2,9 @@ package com.syphan.practice.boardinghouserestfullapi.security;
 
 import com.syphan.practice.commonservice.exception.BIZException;
 import com.syphan.practice.commonservice.security.UserPrincipal;
-import com.syphan.practice.registrationservice.model.Role;
-import com.syphan.practice.registrationservice.model.User;
-import com.syphan.practice.registrationservice.service.UserService;
+import com.syphan.practice.registration.api.model.Role;
+import com.syphan.practice.registration.api.model.User;
+import com.syphan.practice.registration.api.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
