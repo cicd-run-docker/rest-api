@@ -37,6 +37,7 @@
     </profiles>
 ```
 
+## chạy lệnh mvn deploy để đẩy file vào nexus
 
 
 
